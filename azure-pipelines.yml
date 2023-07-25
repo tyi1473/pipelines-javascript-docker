@@ -1,0 +1,36 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- Dev_test
+
+stages:
+- stage: Build
+  displayName: Build .Net Core Solution
+  jobs:
+
+  - job: Build
+    pool:
+       name: default
+       demands:
+       - agent.name -equals sccmadmin-Virtual-Machine
+       vmimage: ubuntu-latest
+    variables:
+      imageName: 'pipelines-javascript-docker'   
+    steps:
+    - task: DockerInstaller@0
+      displayName: Docker Installer
+      inputs:
+        dockerVersion: 17.09.0-ce
+        releaseType: stable
+
+     
+    
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        repository: $(imageName)
+        command: build
+        Dockerfile: app/Dockerfile
