@@ -18,7 +18,12 @@ stages:
        - agent.name -equals sccmadmin-Virtual-Machine
        vmimage: ubuntu-latest
     variables:
-      imageName: 'tachyon-docker'   
+        # Container registry service connection established during pipeline creation
+        dockerRegistryServiceConnection: '{{ containerRegistryConnection.Id }}'
+        imageRepository: 'javascriptdocker'
+        containerRegistry: 'sampleappcontainerregistry.azurecr.io'
+        dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
+        tag: '$(Build.BuildId)' 
     steps:
     - task: DockerInstaller@0
       displayName: Docker Installer
