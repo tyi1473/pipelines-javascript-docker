@@ -17,13 +17,8 @@ stages:
        demands:
        - agent.name -equals sccmadmin-Virtual-Machine
        vmimage: ubuntu-latest
-    variables:
-        # Container registry service connection established during pipeline creation
-        dockerRegistryServiceConnection: '{{ containerRegistryConnection.Id }}'
-        imageRepository: 'javascriptdocker'
-        containerRegistry: 'sampleappcontainerregistry.azurecr.io'
-        dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
-        tag: '$(Build.BuildId)' 
+
+
     steps:
     - task: DockerInstaller@0
       displayName: Docker Installer
@@ -34,14 +29,23 @@ stages:
      
     
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build an image
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+        repository: $(imageName)
+        command: build
+        Dockerfile: app/Dockerfile
       #  repository: $(imageName)
       # command: build
       #  Dockerfile: app/Dockerfile
+
+
+
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          echo "$(containerRegistryConnection.Id)"
+          echo "$(containerregistry)"
+          echo "$(build.SourceDIrectory)
+          
+          echo 'Hello world' }}'
