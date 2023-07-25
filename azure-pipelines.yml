@@ -18,7 +18,7 @@ stages:
        - agent.name -equals sccmadmin-Virtual-Machine
        vmimage: ubuntu-latest
     variables:
-      imageName: 'pipelines-javascript-docker'   
+      imageName: 'tachyon-docker'   
     steps:
     - task: DockerInstaller@0
       displayName: Docker Installer
