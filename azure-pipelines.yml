@@ -45,8 +45,8 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          echo "$containerRegistryConnection.Id"
-          echo "$containerregistry"
-          echo "$build.SourceDIrectory"
+          echo $containerRegistryConnection.Id
+          echo $containerregistry
+          echo $build.SourceDIrectory
           
           echo 'Hello world'
