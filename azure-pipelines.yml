@@ -48,4 +48,4 @@ stages:
           echo "$(containerregistry)"
           echo "$(build.SourceDIrectory)
           
-          echo 'Hello world' }}'
+          echo 'Hello world'
