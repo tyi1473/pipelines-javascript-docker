@@ -20,6 +20,7 @@ stages:
 
     variables:
       imageName: 'pipelines-javascript-docker'
+      solution: 'pipelines-javascript-docker'
     steps:
     - task: DockerInstaller@0
       displayName: Docker Installer
@@ -27,8 +28,9 @@ stages:
         dockerVersion: 17.09.0-ce
         releaseType: stable
 
-     
-    
+    - script: docker --version
+      displayName: Docker Installer
+      workingDirectory: $(solutionDIr)   
     - task: Docker@2
       displayName: Build an image
       inputs:
