@@ -28,8 +28,8 @@ stages:
         dockerVersion: 17.09.0-ce
         releaseType: stable
 
-    - script: docker --version
-      displayName: Docker Installer
+    - script: dotnet build
+      displayName: 'dotnet build'
       workingDirectory: $(solutionDIr)   
     - task: Docker@2
       displayName: Build an image
