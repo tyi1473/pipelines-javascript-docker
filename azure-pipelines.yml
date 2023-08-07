@@ -22,11 +22,11 @@ stages:
       imageName: 'pipelines-javascript-docker'
       solution: 'pipelines-javascript-docker'
     steps:
-    - task: DockerInstaller@0
-      displayName: Docker Installer
-      inputs:
-        dockerVersion: 17.09.0-ce
-        releaseType: stable
+    # - task: DockerInstaller@0
+    #   displayName: Docker Installer
+    #   inputs:
+    #     dockerVersion: 17.09.0-ce
+    #     releaseType: stable
 
     # - script: dotnet build
     #   displayName: 'dotnet build'
