@@ -28,9 +28,17 @@ stages:
         dockerVersion: 17.09.0-ce
         releaseType: stable
 
-    - script: dotnet build
-      displayName: 'dotnet build'
-      workingDirectory: $(solutionDIr)   
+    # - script: dotnet build
+    #   displayName: 'dotnet build'
+    #   workingDirectory: $(solutionDIr)   
+    
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker version 
+          
+          echo 'docker version '
     - task: Docker@2
       displayName: Build an image
       inputs:
